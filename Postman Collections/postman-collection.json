@@ -1,0 +1,298 @@
+{
+	"info": {
+		"_postman_id": "0ffe3a71-9696-4d76-8444-03904e2dbb28",
+		"name": "Household Wishlist",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Household",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2f4dbc77-8577-4ed9-b76c-920d1fed15c0",
+						"exec": [
+							"pm.globals.set(\"householdid\", pm.response.json ().id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "0f213796-197b-4385-b21c-9542fdcfb7d1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "G-TOKEN",
+						"value": "ROM831ESV",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"name\": \"New Motwani Household\"\r\n    }",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": "http://localhost:3000/households"
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2f9b8180-3160-44b5-a97b-085313603a5c",
+						"exec": [
+							"pm.globals.set(\"firstwishlistid\", pm.response.json().wishlistId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "f634966f-8f53-46a5-8317-3c9651f5ddf6",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "G-TOKEN",
+						"value": "ROM831ESV",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"testmotwani@gmail.com\",\r\n    \"firstname\": \"Tattu\",\r\n    \"lastname\": \"Gattu\",\r\n    \"householdid\": {{householdid}}\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": "localhost:3000/users"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Second User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7eb1f66c-874d-4614-a57f-fa38cab745f1",
+						"exec": [
+							"pm.globals.set(\"secondwishlistid\", pm.response.json().wishlistId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "a603d356-1580-4e19-a3bd-9053c83607e7",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "G-TOKEN",
+						"value": "ROM831ESV",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"testmotwani@gmail.com\",\r\n    \"firstname\": \"Motu\",\r\n    \"lastname\": \"Patlu\",\r\n    \"householdid\": {{householdid}}\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": "localhost:3000/users"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Book to user",
+			"_postman_id": "20e43442-2c54-420b-83e3-4fdb7201ddec",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "G-TOKEN",
+						"value": "ROM831ESV",
+						"type": "text"
+					}
+				],
+				"url": "localhost:3000/wishlists/{{firstwishlistid}}/books/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Book to 2nd user",
+			"_postman_id": "552653d9-1dcd-4717-8ed7-5ec4ec812a36",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "G-TOKEN",
+						"value": "ROM831ESV",
+						"type": "text"
+					}
+				],
+				"url": "localhost:3000/wishlists/{{secondwishlistid}}/books/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Household books",
+			"_postman_id": "c08cdd66-346e-4051-bd9a-f1262312fdec",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "G-TOKEN",
+						"value": "ROM831ESV",
+						"type": "text"
+					}
+				],
+				"url": "localhost:3000/households/{{householdid}}/wishlistBooks"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users",
+			"_postman_id": "ec1f1e9a-1b64-49e2-b15b-7e1b62e050d5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "G-TOKEN",
+						"value": "ROM831ESV",
+						"type": "text"
+					}
+				],
+				"url": "localhost:3000/users"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Users (pre-req)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f1f8fa29-ff02-4885-852c-2775bda3d09f",
+						"exec": [
+							"const users = [\r",
+							"    {\r",
+							"    email: \"1stEmail@gmail.com\",\r",
+							"    firstName: \"1st\",\r",
+							"    lastname: \"last\"\r",
+							"    }, {\r",
+							"    email: \"2ndEmail@gmail.com\",\r",
+							"    firstName: \"2nd\",\r",
+							"    lastname: \"last\"\r",
+							"    }, {\r",
+							"    email: \"3rdEmail@gmail.com\",\r",
+							"    firstName: \"3rd\",\r",
+							"    lastname: \"last\"\r",
+							"    }\r",
+							"];\r",
+							"\r",
+							"const user = _.sample(users);\r",
+							"\r",
+							"pm.globals.set(\"email\", user.email);\r",
+							"pm.globals.set(\"firstName\", user.firstName);\r",
+							"pm.globals.set(\"lastname\", user.lastName);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "f662e858-ee9e-424d-9dbc-18840ad9e103",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "G-TOKEN",
+						"value": "ROM831ESV",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"firstname\": \"{{firstName}}\",\r\n    \"lastname\": \"{{lastName}}\",\r\n    \"householdid\": {{householdid}}\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": "{{host}}/users"
+			},
+			"response": []
+		}
+	]
+}
